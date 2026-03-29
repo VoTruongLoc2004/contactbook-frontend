@@ -8,5 +8,3 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import router from "./router";
 
 createApp(App).use(router).mount("#app");
-
-console.log("FRONTEND ĐANG CHẠY Ở ĐÂY");
