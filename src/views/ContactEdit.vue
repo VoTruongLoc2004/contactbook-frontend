@@ -31,6 +31,7 @@ export default {
         this.contact = await ContactService.get(id);
       } catch (error) {
         console.log(error);
+        console.log(error);
         this.$router.push({
           name: "notfound",
           params: {
@@ -55,8 +56,8 @@ export default {
         try {
           await ContactService.delete(this.contact._id);
           this.$router.push({ name: "contactbook" });
-        } catch (err) {
-          console.log(err);
+        } catch (error) {
+          console.log(error);
         }
       }
     },

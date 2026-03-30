@@ -10,7 +10,6 @@
       />
       <ErrorMessage name="name" class="error-feedback" />
     </div>
-
     <div class="form-group">
       <label for="email">E-mail</label>
       <Field
@@ -21,7 +20,6 @@
       />
       <ErrorMessage name="email" class="error-feedback" />
     </div>
-
     <div class="form-group">
       <label for="address">Địa chỉ</label>
       <Field
@@ -32,7 +30,6 @@
       />
       <ErrorMessage name="address" class="error-feedback" />
     </div>
-
     <div class="form-group">
       <label for="phone">Điện thoại</label>
       <Field
@@ -43,7 +40,6 @@
       />
       <ErrorMessage name="phone" class="error-feedback" />
     </div>
-
     <div class="form-group form-check">
       <input
         name="favorite"
@@ -55,7 +51,6 @@
         <strong>Liên hệ yêu thích</strong>
       </label>
     </div>
-
     <div class="form-group">
       <button class="btn btn-primary">Lưu</button>
       <button
@@ -66,17 +61,15 @@
       >
         Xóa
       </button>
-      <button type="button" class="ml-2 btn btn-secondary" @click="Cancel">
+      <button type="button" class="ml-2 btn btn-danger" @click="Cancel">
         Thoát
       </button>
     </div>
   </Form>
 </template>
-
 <script>
 import * as yup from "yup";
 import { Form, Field, ErrorMessage } from "vee-validate";
-
 export default {
   components: {
     Form,
@@ -107,7 +100,7 @@ export default {
         ),
     });
     return {
-      contactLocal: { ...this.contact },
+      contactLocal: this.contact,
       contactFormSchema,
     };
   },
@@ -116,13 +109,19 @@ export default {
       this.$emit("submit:contact", this.contactLocal);
     },
     deleteContact() {
-      this.$emit("delete:contact", this.contactLocal._id);
+      this.$emit("delete:contact", this.contactLocal.id);
     },
     Cancel() {
-      if (window.confirm("Bạn có chắc chắn muốn thoát?")) {
-        this.$router.push({ name: "contactbook" });
-      }
+      const reply = window.confirm(
+        "You have unsaved changes! Do you want to leave?",
+      );
+      if (!reply) {
+        return false;
+      } else this.$router.push({ name: "contactbook" });
     },
   },
 };
 </script>
+<style scoped>
+@import "@/assets/form.css";
+</style>

@@ -3,9 +3,24 @@ import ContactBook from "@/views/ContactBook.vue";
 
 const routes = [
   {
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/Login.vue"),
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: () => import("@/views/Register.vue"),
+  },
+  {
     path: "/",
     name: "contactbook",
     component: ContactBook,
+  },
+  {
+    path: "/add",
+    name: "contact.add",
+    component: () => import("@/views/ContactAdd.vue"),
   },
   {
     path: "/contacts/:id",
@@ -17,11 +32,6 @@ const routes = [
     path: "/:pathMatch(.*)*",
     name: "notfound",
     component: () => import("@/views/NotFound.vue"),
-  },
-  {
-    path: "/add",
-    name: "contact.add",
-    component: () => import("@/views/ContactAdd.vue"),
   },
 ];
 
