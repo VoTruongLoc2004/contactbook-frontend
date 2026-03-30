@@ -55,8 +55,8 @@ export default {
         try {
           await ContactService.delete(this.contact._id);
           this.$router.push({ name: "contactbook" });
-        } catch (error) {
-          console.log(error);
+        } catch (err) {
+          console.log(err);
         }
       }
     },
